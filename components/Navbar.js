@@ -23,7 +23,8 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const yOffset = -100;
+      
+      const yOffset = (sectionId === "Hero") ? 0 : -50;
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 

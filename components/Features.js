@@ -33,7 +33,7 @@ const Features = () => {
       className="flex flex-col items-center gap-8 justify-start h-screen pt-8 pb-10 px-4 bg-slate-50"
       id="Features"
     >
-      <h1 className="text-3xl font-bold">Features</h1>
+      <h1 className="text-3xl font-bold uppercase">Features</h1>
       <h1 className="text-5xl font-black text-slate-800">
         Everything you need to manage projects
       </h1>
