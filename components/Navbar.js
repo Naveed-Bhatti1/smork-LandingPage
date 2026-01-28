@@ -24,7 +24,7 @@ const Navbar = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       
-      const yOffset = (sectionId === "Hero") ? 0 : -50;
+      const yOffset = (sectionId === "Hero") ? -120 : -50;
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
