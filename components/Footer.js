@@ -147,7 +147,7 @@ const Footer = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12"
         >
           {/* Brand Column */}
@@ -159,7 +159,7 @@ const Footer = () => {
               className="text-3xl font-bold mb-4 cursor-pointer"
             >
               <motion.span
-                animate={{
+                whileInView={{
                   color: ["#2F9AF8", "#3b82f6", "#2F9AF8"],
                 }}
                 transition={{
@@ -207,7 +207,7 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.button
@@ -231,7 +231,7 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
@@ -255,7 +255,7 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
@@ -279,7 +279,7 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
@@ -300,7 +300,7 @@ const Footer = () => {
         <motion.div
           variants={newsletterVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="mt-12 pt-8 border-t border-slate-800"
         >
           <div className="max-w-md">
@@ -337,7 +337,7 @@ const Footer = () => {
         <motion.div
           variants={bottomBarVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="container mx-auto px-4 py-6 max-w-7xl"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
