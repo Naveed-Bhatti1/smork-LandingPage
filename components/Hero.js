@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { Sparkles, ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
@@ -107,39 +107,43 @@ const Hero = () => {
 
   // Counter Animation Component
   const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { margin: "-50px" });
     const [count, setCount] = useState(0);
 
     useEffect(() => {
       let startTime;
       let animationFrame;
 
+      if (!isInView) {
+        setCount(0); // reset when out of view
+        return;
+      }
+
       const animate = (currentTime) => {
         if (!startTime) startTime = currentTime;
-        const progress = (currentTime - startTime) / (duration * 1000);
+        const progress = Math.min(
+          (currentTime - startTime) / (duration * 1000),
+          1,
+        );
+
+        setCount(Math.floor(progress * end));
 
         if (progress < 1) {
-          setCount(Math.floor(end * progress));
           animationFrame = requestAnimationFrame(animate);
-        } else {
-          setCount(end);
         }
       };
 
-      const timer = setTimeout(() => {
-        animationFrame = requestAnimationFrame(animate);
-      }, 800);
+      animationFrame = requestAnimationFrame(animate);
 
-      return () => {
-        clearTimeout(timer);
-        if (animationFrame) cancelAnimationFrame(animationFrame);
-      };
-    }, [end, duration]);
+      return () => cancelAnimationFrame(animationFrame);
+    }, [isInView, end, duration]);
 
     return (
-      <>
+      <span ref={ref}>
         {count}
         {suffix}
-      </>
+      </span>
     );
   };
 
@@ -160,25 +164,22 @@ const Hero = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const yOffset = sectionId === "hero" ? -120 : -100;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
       window.scrollTo({
         top: y,
         behavior: "smooth",
       });
-      
     }
   };
 
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-screen overflow-hidden"
-    >
+    <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{
+          whileInView={{
             scale: [1, 1.2, 1],
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -191,7 +192,7 @@ const Hero = () => {
           className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"
         ></motion.div>
         <motion.div
-          animate={{
+          whileInView={{
             scale: [1, 1.3, 1],
             x: [0, -30, 0],
             y: [0, -50, 0],
@@ -208,7 +209,7 @@ const Hero = () => {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
         className="relative container mx-auto px-4 pt-12 pb-20"
       >
         {/* Announcement Badge */}
@@ -222,7 +223,7 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white shadow-lg hover:bg-white/30 transition-all duration-300 cursor-pointer"
           >
             <motion.div
-              animate={{
+              whileInView={{
                 rotate: [0, 360],
               }}
               transition={{
@@ -237,7 +238,7 @@ const Hero = () => {
               New: AI-Powered Task Suggestions
             </span>
             <motion.div
-              animate={{
+              whileInView={{
                 x: [0, 5, 0],
               }}
               transition={{
@@ -259,7 +260,7 @@ const Hero = () => {
           >
             <motion.span
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               Everything you need,
@@ -267,7 +268,7 @@ const Hero = () => {
             <br />
             <motion.span
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-slate-100"
             >
@@ -281,7 +282,8 @@ const Hero = () => {
           variants={itemVariants}
           className="text-center text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed"
         >
-          Unite your team and AI to plan, organize, and complete work efficiently
+          Unite your team and AI to plan, organize, and complete work
+          efficiently
         </motion.p>
 
         {/* CTA Buttons */}
@@ -298,7 +300,7 @@ const Hero = () => {
           >
             Get Started Free
             <motion.div
-              animate={{
+              whileInView={{
                 x: [0, 5, 0],
               }}
               transition={{
@@ -313,10 +315,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Hero Image */}
-        <motion.div
-          variants={imageVariants}
-          className="max-w-6xl mx-auto"
-        >
+        <motion.div variants={imageVariants} className="max-w-6xl mx-auto">
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.4 }}
@@ -325,7 +324,7 @@ const Hero = () => {
             <Image
               src="/HeroImage.jpeg"
               width={1200}
-              height= {800}
+              height={800}
               alt="Smork Dashboard Preview"
               className="w-full h-auto"
             />
@@ -340,11 +339,11 @@ const Hero = () => {
             custom={0}
             variants={statsVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
           >
             <motion.div
               initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
+              whileInView={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
               className="text-4xl font-bold text-white mb-2"
             >
@@ -356,11 +355,11 @@ const Hero = () => {
             custom={1}
             variants={statsVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
           >
             <motion.div
               initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
+              whileInView={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 1.0 }}
               className="text-4xl font-bold text-white mb-2"
             >
@@ -372,11 +371,11 @@ const Hero = () => {
             custom={2}
             variants={statsVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
           >
             <motion.div
               initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
+              whileInView={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 1.1 }}
               className="text-4xl font-bold text-white mb-2"
             >
@@ -391,7 +390,7 @@ const Hero = () => {
       <div className="relative bg-slate-800/80 backdrop-blur-sm py-8 mt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
           className="container mx-auto px-4 mb-4"
         >
@@ -402,7 +401,7 @@ const Hero = () => {
         <div className="overflow-hidden">
           <motion.div
             className="flex gap-8 items-center"
-            animate={{ x: ["0%", "-50%"] }}
+            whileInView={{ x: ["0%", "-50%"] }}
             transition={{
               x: {
                 repeat: Infinity,
