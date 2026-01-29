@@ -167,7 +167,7 @@ const Benefits = () => {
         <motion.div
           variants={badgeVariants}
           initial="hidden"
-          animate={isCardInView ? "visible" : "hidden"}
+          whileInView={isCardInView ? "visible" : "hidden"}
           whileHover={{ 
             scale: 1.2, 
             rotate: 360,
@@ -193,7 +193,7 @@ const Benefits = () => {
         <motion.div
           variants={imageVariants}
           initial="hidden"
-          animate={isCardInView ? "visible" : "hidden"}
+          whileInView={isCardInView ? "visible" : "hidden"}
           className="w-full lg:w-1/2"
         >
           <motion.div
@@ -223,7 +223,7 @@ const Benefits = () => {
         <motion.div
           variants={contentVariants}
           initial="hidden"
-          animate={isCardInView ? "visible" : "hidden"}
+          whileInView={isCardInView ? "visible" : "hidden"}
           className="w-full lg:w-1/2"
         >
           <motion.div
@@ -267,7 +267,7 @@ const Benefits = () => {
                   custom={idx}
                   variants={bulletVariants}
                   initial="hidden"
-                  animate={isCardInView ? "visible" : "hidden"}
+                  whileInView={isCardInView ? "visible" : "hidden"}
                   className="flex items-start gap-3 text-slate-700"
                 >
                   <motion.div
@@ -308,13 +308,13 @@ const Benefits = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            whileInView={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-2 bg-blue-100 text-[#2F9AF8] rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
@@ -322,7 +322,7 @@ const Benefits = () => {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
@@ -330,7 +330,7 @@ const Benefits = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
@@ -343,7 +343,7 @@ const Benefits = () => {
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 -ml-0.5">
             <motion.div
               initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+              whileInView={isInView ? { scaleY: 1 } : { scaleY: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
               style={{ originY: 0 }}
               className="h-full border-l-2 border-dashed border-blue-200"
@@ -377,7 +377,7 @@ const Benefits = () => {
           >
            Start Free Trial
             <motion.div
-              animate={{ x: [0, 5, 0] }}
+              whileInView={{ x: [0, 5, 0] }}
               transition={{ 
                 duration: 1.5,
                 repeat: Infinity,
