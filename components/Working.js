@@ -134,13 +134,13 @@ const Working = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            whileInView={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
@@ -148,7 +148,7 @@ const Working = () => {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
@@ -156,7 +156,7 @@ const Working = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
@@ -171,7 +171,7 @@ const Working = () => {
             <div className="relative h-1">
               <motion.div
                 initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                whileInView={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ 
                   duration: 1.5,
                   delay: 0.5,
@@ -182,7 +182,7 @@ const Working = () => {
               ></motion.div>
               <motion.div
                 initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                whileInView={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ 
                   duration: 1.5,
                   delay: 0.5,
@@ -198,7 +198,7 @@ const Working = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            whileInView={isInView ? "visible" : "hidden"}
             className="grid lg:grid-cols-3 gap-12 lg:gap-8"
           >
             {steps.map((step, index) => (
@@ -243,7 +243,7 @@ const Working = () => {
                     {/* Emoji with bounce */}
                     <motion.div
                       initial={{ scale: 0 }}
-                      animate={isInView ? { scale: 1 } : { scale: 0 }}
+                      whileInView={isInView ? { scale: 1 } : { scale: 0 }}
                       transition={{
                         type: "spring",
                         stiffness: 200,
@@ -263,7 +263,7 @@ const Working = () => {
                     {/* Label */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.6 + index * 0.3 }}
                       className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3"
                     >
@@ -273,7 +273,7 @@ const Working = () => {
                     {/* Title */}
                     <motion.h3
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.7 + index * 0.3 }}
                       className="text-2xl font-bold text-slate-800 mb-4"
                     >
@@ -283,7 +283,7 @@ const Working = () => {
                     {/* Description */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.8 + index * 0.3 }}
                       className="text-slate-600 leading-relaxed mb-6"
                     >
@@ -314,7 +314,7 @@ const Working = () => {
                 {index < steps.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
-                    animate={isInView ? { 
+                    whileInView={isInView ? { 
                       opacity: 1, 
                       y: 0,
                     } : { 
@@ -328,7 +328,7 @@ const Working = () => {
                     className="lg:hidden flex justify-center my-8"
                   >
                     <motion.div
-                      animate={{
+                      whileInView={{
                         y: [0, 10, 0],
                       }}
                       transition={{
