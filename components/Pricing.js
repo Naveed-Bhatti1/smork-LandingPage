@@ -137,13 +137,13 @@ const Pricing = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            whileInView={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
@@ -151,7 +151,7 @@ const Pricing = () => {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
@@ -159,7 +159,7 @@ const Pricing = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-slate-600 text-xl mb-8"
           >
@@ -169,7 +169,7 @@ const Pricing = () => {
           {/* Toggle Switch */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex items-center justify-center gap-4"
           >
@@ -186,7 +186,7 @@ const Pricing = () => {
               <motion.div
                 layout
                 className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md"
-                animate={{
+                whileInView={{
                   x: isYearly ? 32 : 0,
                 }}
                 transition={{
@@ -200,7 +200,7 @@ const Pricing = () => {
               Yearly
               <motion.span
                 initial={{ scale: 0 }}
-                animate={{ scale: isYearly ? 1 : 0 }}
+                whileInView={{ scale: isYearly ? 1 : 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="ml-2 text-sm text-green-600 font-bold inline-block"
               >
@@ -214,7 +214,7 @@ const Pricing = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
           {plans.map((plan, index) => (
@@ -241,7 +241,7 @@ const Pricing = () => {
               {plan.popular && (
                 <motion.div
                   initial={{ y: -10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
+                  whileInView={{ y: 0, opacity: 1 }}
                   transition={{ 
                     delay: 0.8,
                     type: "spring",
@@ -251,7 +251,7 @@ const Pricing = () => {
                   className="absolute -top-4 left-1/2 transform -translate-x-1/2"
                 >
                   <motion.div
-                    animate={{
+                    whileInView={{
                       scale: [1, 1.05, 1],
                     }}
                     transition={{
@@ -262,7 +262,7 @@ const Pricing = () => {
                     className="bg-linear-to-r from-[#2F9AF8] to-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1"
                   >
                     <motion.div
-                      animate={{ rotate: [0, 15, 0] }}
+                      whileInView={{ rotate: [0, 15, 0] }}
                       transition={{
                         duration: 1.5,
                         repeat: Infinity,
@@ -287,7 +287,7 @@ const Pricing = () => {
                   <motion.span
                     key={plan.price}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
                     className="text-5xl font-bold text-slate-800"
                   >
@@ -301,7 +301,7 @@ const Pricing = () => {
                   <motion.p
                     key={plan.billing}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                     className="text-sm text-slate-500"
                   >
@@ -327,7 +327,7 @@ const Pricing = () => {
                     custom={idx}
                     variants={featureVariants}
                     initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
+                    whileInView={isInView ? "visible" : "hidden"}
                     className="flex items-start gap-3"
                   >
                     <motion.div
@@ -367,7 +367,7 @@ const Pricing = () => {
         {/* Bottom Note */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 1 }}
           className="text-center mt-12"
         >
