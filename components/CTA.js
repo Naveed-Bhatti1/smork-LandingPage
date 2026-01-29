@@ -109,7 +109,7 @@ const CTA = () => {
       {/* Decorative Background Elements with Animation */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{
+          whileInView={{
             scale: [1, 1.2, 1],
             x: [0, 30, 0],
             y: [0, -20, 0],
@@ -122,7 +122,7 @@ const CTA = () => {
           className="absolute top-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"
         ></motion.div>
         <motion.div
-          animate={{
+          whileInView={{
             scale: [1, 1.3, 1],
             x: [0, -40, 0],
             y: [0, 30, 0],
@@ -141,7 +141,7 @@ const CTA = () => {
         <motion.h2
           variants={headingVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
         >
           Ready to transform your workflow?
@@ -151,7 +151,7 @@ const CTA = () => {
         <motion.p
           variants={subheadingVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed"
         >
           Join 10,000+ teams already using Smork to deliver projects faster
@@ -161,7 +161,7 @@ const CTA = () => {
         <motion.div
           variants={buttonContainerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
           <motion.button
@@ -173,7 +173,7 @@ const CTA = () => {
           >
             {/* Pulse effect */}
             <motion.div
-              animate={{
+              whileInView={{
                 scale: [1, 1.5, 1.5],
                 opacity: [0.5, 0, 0],
               }}
@@ -186,7 +186,7 @@ const CTA = () => {
             />
             <span className="relative z-10">Start Free Trial</span>
             <motion.div
-              animate={{
+              whileInView={{
                 x: [0, 5, 0],
               }}
               transition={{
@@ -219,7 +219,7 @@ const CTA = () => {
         {/* Small Text */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          whileInView={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-white/80 text-sm mb-10"
         >
@@ -234,7 +234,7 @@ const CTA = () => {
               custom={index}
               variants={trustBadgeVariants}
               initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+              whileInView={isInView ? "visible" : "hidden"}
               whileHover={{ 
                 scale: 1.1,
                 transition: { duration: 0.2 }
@@ -242,7 +242,7 @@ const CTA = () => {
               className="flex items-center gap-2 cursor-default"
             >
               <motion.div
-                animate={{
+                whileInView={{
                   rotate: [0, 10, -10, 0],
                 }}
                 transition={{
