@@ -102,13 +102,13 @@ const Features = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={
+            whileInView={
               isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
             }
             transition={{ duration: 0.5 }}
@@ -118,7 +118,7 @@ const Features = () => {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
@@ -126,7 +126,7 @@ const Features = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
@@ -138,7 +138,7 @@ const Features = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-2 gap-10 lg:gap-12"
         >
           {Cards.map((card, index) => (
