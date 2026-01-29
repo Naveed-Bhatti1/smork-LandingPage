@@ -1,9 +1,21 @@
-'use client';
+"use client";
 
-import { ChartColumn, ListChecks, UserRound, Zap, ArrowRight } from "lucide-react";
+import {
+  ChartColumn,
+  ListChecks,
+  UserRound,
+  Zap,
+  ArrowRight,
+} from "lucide-react";
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Features = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const Cards = [
     {
       number: "01",
@@ -39,64 +51,156 @@ const Features = () => {
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
   return (
     <section
       id="features"
-      className="py-20 bg-gradient-to-b from-white to-[#f9fafb]"
+      className="py-20 bg-linear-to-b from-white to-[#f9fafb]"
+      ref={ref}
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={headerVariants}
+          className="text-center mb-20"
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
+          >
             Features
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
+          >
             Everything you need to manage projects
-          </h2>
-          <p className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
+          >
             Powerful features designed for modern teams
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid md:grid-cols-2 gap-10 lg:gap-12"
+        >
           {Cards.map((card, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={cardVariants}
               className="relative group"
             >
               {/* Number Badge */}
-              <div className={`
-                absolute -top-6 -left-6 z-20
-                w-16 h-16 rounded-full
-                bg-gradient-to-br ${card.gradient}
-                flex items-center justify-center
-                shadow-xl
-                ring-4 ring-white
-                group-hover:scale-110 transition-transform duration-300
-              `}>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className={`
+                  absolute -top-6 -left-6 z-20
+                  w-16 h-16 rounded-full
+                  bg-linear-to-br ${card.gradient}
+                  flex items-center justify-center
+                  shadow-xl
+                  ring-4 ring-white
+                  transition-transform duration-300
+                `}
+              >
                 <span className="text-white text-xl font-bold">
                   {card.number}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Card */}
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 lg:p-10 pt-12 hover:-translate-y-2">
+              <motion.div
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
+                className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 lg:p-10 pt-12"
+              >
                 {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-300`}></div>
-                
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 0.05 }}
+                  transition={{ duration: 0.3 }}
+                  className={`absolute inset-0 bg-linear-to-br ${card.gradient} rounded-3xl`}
+                ></motion.div>
+
                 {/* Content */}
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className={`
-                    w-20 h-20 rounded-2xl
-                    bg-gradient-to-br ${card.gradient}
-                    flex items-center justify-center
-                    text-white mb-6
-                    shadow-lg
-                  `}>
+                  <motion.div
+                    whileHover={{
+                      scale: 1.1,
+                      rotate: [0, -5, 5, -5, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className={`
+                      w-20 h-20 rounded-2xl
+                      bg-linear-to-br ${card.gradient}
+                      flex items-center justify-center
+                      text-white mb-6
+                      shadow-lg
+                    `}
+                  >
                     {card.icon}
-                  </div>
+                  </motion.div>
 
                   {/* Title */}
                   <h3 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
@@ -107,26 +211,16 @@ const Features = () => {
                   <p className="text-slate-600 text-lg leading-relaxed mb-6">
                     {card.description}
                   </p>
-
-                  {/* Learn More Link */}
-                  <button className={`
-                    group/btn flex items-center gap-2 
-                    text-transparent bg-clip-text bg-gradient-to-r ${card.gradient}
-                    font-semibold
-                    hover:gap-3 transition-all duration-300
-                  `}>
-                    Learn more
-                    <ArrowRight size={16} className={`text-[#2F9AF8]`} />
-                  </button>
                 </div>
 
                 {/* Decorative corner */}
-                <div className={`absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl ${card.gradient} opacity-5 rounded-tl-full rounded-br-3xl`}></div>
-              </div>
-            </div>
+                <div
+                  className={`absolute bottom-0 right-0 w-24 h-24 bg-linear-to-tl ${card.gradient} opacity-5 rounded-tl-full rounded-br-3xl`}
+                ></div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-        
+        </motion.div>
       </div>
     </section>
   );

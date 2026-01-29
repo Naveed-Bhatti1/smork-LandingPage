@@ -156,6 +156,20 @@ const Hero = () => {
     }),
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = sectionId === "hero" ? -120 : -100;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+      
+    }
+  };
+
   return (
     <section 
       id="hero" 
@@ -276,6 +290,7 @@ const Hero = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <motion.button
+            onClick={() => scrollToSection("pricing")}
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -310,7 +325,7 @@ const Hero = () => {
             <Image
               src="/HeroImage.jpeg"
               width={1200}
-              height={800}
+              height= {800}
               alt="Smork Dashboard Preview"
               className="w-full h-auto"
             />
