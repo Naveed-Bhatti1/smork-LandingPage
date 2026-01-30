@@ -67,7 +67,7 @@ const Navbar = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: [0.25, 0.4, 0.25, 1],
         delay: 0.2,
       },
@@ -129,7 +129,7 @@ const Navbar = () => {
               color: ["#2F9AF8", "#3b82f6", "#2F9AF8"],
             }}
             transition={{
-              duration: 3,
+              duration: 1.5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -147,10 +147,10 @@ const Navbar = () => {
               onClick={() => scrollToSection(item.id)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="cursor-pointer transition duration-300 relative"
+              className="cursor-pointer transition duration-150 relative"
             >
               <span
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-150 ${
                   activeSection === item.id
                     ? "text-[#2F9AF8] font-bold"
                     : "hover:text-[#2F9AF8]"
@@ -178,13 +178,14 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <motion.button
+          aria-label="Get started for free"
           onClick={() => scrollToSection("pricing")}
           whileHover={{
             scale: 1.1,
             backgroundColor: "#1e293b",
           }}
           whileTap={{ scale: 0.95 }}
-          className="hidden lg:block bg-[#2F9AF8] text-white px-6 py-3 rounded-xl transition duration-300 font-semibold"
+          className="hidden lg:block bg-[#2F9AF8] text-white px-6 py-3 rounded-xl transition duration-150 font-semibold"
         >
           Get Started
         </motion.button>

@@ -6,7 +6,7 @@ import { useRef } from "react";
 
 const CTA = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, {  margin: "-100px" });
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -29,7 +29,7 @@ const CTA = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: [0.25, 0.4, 0.25, 1],
       },
     },
@@ -41,7 +41,7 @@ const CTA = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         delay: 0.2,
         ease: "easeOut",
       },
@@ -54,8 +54,8 @@ const CTA = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.4,
+        duration: 0.3,
+        delay: 0.2,
         staggerChildren: 0.1,
       },
     },
@@ -67,7 +67,7 @@ const CTA = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -79,7 +79,7 @@ const CTA = () => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         delay: 0.8 + i * 0.1,
         ease: "easeOut",
       },
@@ -109,26 +109,26 @@ const CTA = () => {
       {/* Decorative Background Elements with Animation */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          whileInView={{
+          animate={{
             scale: [1, 1.2, 1],
             x: [0, 30, 0],
             y: [0, -20, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           className="absolute top-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"
         ></motion.div>
         <motion.div
-          whileInView={{
+          animate={{
             scale: [1, 1.3, 1],
             x: [0, -40, 0],
             y: [0, 30, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -141,7 +141,7 @@ const CTA = () => {
         <motion.h2
           variants={headingVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
         >
           Ready to transform your workflow?
@@ -151,7 +151,7 @@ const CTA = () => {
         <motion.p
           variants={subheadingVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed"
         >
           Join 10,000+ teams already using Smork to deliver projects faster
@@ -161,24 +161,25 @@ const CTA = () => {
         <motion.div
           variants={buttonContainerVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
           <motion.button
+            aria-label="Start Free Trial"
             variants={buttonVariants}
             onClick={() => scrollToSection("pricing")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="group bg-white text-blue-600 px-10 py-4 rounded-2xl text-lg font-bold transition-all duration-300 shadow-2xl flex items-center gap-2 relative overflow-hidden"
+            className="group bg-white text-blue-600 px-10 py-4 rounded-2xl text-lg font-bold transition-all duration-150 shadow-2xl flex items-center gap-2 relative overflow-hidden"
           >
             {/* Pulse effect */}
             <motion.div
-              whileInView={{
+              animate={{
                 scale: [1, 1.5, 1.5],
                 opacity: [0.5, 0, 0],
               }}
               transition={{
-                duration: 2,
+                duration: 1,
                 repeat: Infinity,
                 ease: "easeOut",
               }}
@@ -186,11 +187,11 @@ const CTA = () => {
             />
             <span className="relative z-10">Start Free Trial</span>
             <motion.div
-              whileInView={{
+              animate={{
                 x: [0, 5, 0],
               }}
               transition={{
-                duration: 1.5,
+                duration: 0.8,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
@@ -201,10 +202,11 @@ const CTA = () => {
           </motion.button>
 
           <motion.button
+            aria-label="Schedule a Demo"
             variants={buttonVariants}
             whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 1)" }}
             whileTap={{ scale: 0.98 }}
-            className="group bg-transparent border-2 border-white text-white px-10 py-4 rounded-2xl text-lg font-bold hover:text-blue-600 transition-all duration-300 flex items-center gap-2"
+            className="group bg-transparent border-2 border-white text-white px-10 py-4 rounded-2xl text-lg font-bold hover:text-blue-600 transition-all duration-150 flex items-center gap-2"
           >
             <motion.div
               whileHover={{ scale: 1.2 }}
@@ -219,8 +221,8 @@ const CTA = () => {
         {/* Small Text */}
         <motion.p
           initial={{ opacity: 0 }}
-          whileInView={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
           className="text-white/80 text-sm mb-10"
         >
           No credit card required • 14-day free trial • Cancel anytime
@@ -234,7 +236,7 @@ const CTA = () => {
               custom={index}
               variants={trustBadgeVariants}
               initial="hidden"
-              whileInView={isInView ? "visible" : "hidden"}
+              animate={isInView ? "visible" : "hidden"}
               whileHover={{ 
                 scale: 1.1,
                 transition: { duration: 0.2 }
@@ -242,11 +244,11 @@ const CTA = () => {
               className="flex items-center gap-2 cursor-default"
             >
               <motion.div
-                whileInView={{
+                animate={{
                   rotate: [0, 10, -10, 0],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 1,
                   repeat: Infinity,
                   repeatDelay: 3,
                   ease: "easeInOut",

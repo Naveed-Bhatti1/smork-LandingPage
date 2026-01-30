@@ -14,7 +14,7 @@ import { useRef } from "react";
 
 const Features = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { margin: "-100px" });
 
   const Cards = [
     {
@@ -69,7 +69,7 @@ const Features = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -86,7 +86,7 @@ const Features = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: [0.25, 0.4, 0.25, 1],
       },
     },
@@ -102,32 +102,32 @@ const Features = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={
+            animate={
               isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
             }
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
             Features
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
             Everything you need to manage projects
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
             Powerful features designed for modern teams
@@ -138,7 +138,7 @@ const Features = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-2 gap-10 lg:gap-12"
         >
           {Cards.map((card, index) => (
@@ -158,7 +158,7 @@ const Features = () => {
                   flex items-center justify-center
                   shadow-xl
                   ring-4 ring-white
-                  transition-transform duration-300
+                  transition-transform duration-150
                 `}
               >
                 <span className="text-white text-xl font-bold">
@@ -172,7 +172,7 @@ const Features = () => {
                   y: -8,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 lg:p-10 pt-12"
+                className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-150 p-8 lg:p-10 pt-12"
               >
                 {/* Gradient overlay on hover */}
                 <motion.div
@@ -189,7 +189,7 @@ const Features = () => {
                     whileHover={{
                       scale: 1.1,
                       rotate: [0, -5, 5, -5, 0],
-                      transition: { duration: 0.5 },
+                      transition: { duration: 0.3 },
                     }}
                     className={`
                       w-20 h-20 rounded-2xl

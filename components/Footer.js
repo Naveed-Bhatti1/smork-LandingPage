@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const isInView = useInView(footerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(footerRef, { margin: "-100px" });
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -77,7 +77,7 @@ const Footer = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -92,7 +92,7 @@ const Footer = () => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -120,8 +120,8 @@ const Footer = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.5,
+        duration: 0.3,
+        delay: 0.2,
         ease: "easeOut",
       },
     },
@@ -134,8 +134,8 @@ const Footer = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
-        delay: 0.7,
+        duration: 0.3,
+        delay: 0.4,
       },
     },
   };
@@ -147,7 +147,7 @@ const Footer = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12"
         >
           {/* Brand Column */}
@@ -159,11 +159,11 @@ const Footer = () => {
               className="text-3xl font-bold mb-4 cursor-pointer"
             >
               <motion.span
-                whileInView={{
+                animate={{
                   color: ["#2F9AF8", "#3b82f6", "#2F9AF8"],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 1.5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
@@ -191,7 +191,7 @@ const Footer = () => {
                     backgroundColor: "#2F9AF8",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-150"
                 >
                   {social.icon}
                 </motion.a>
@@ -207,14 +207,15 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.button
+                    aria-label='Footer links'
                     onClick={() => scrollToSection(link.id)}
                     whileHover={{ x: 5, color: "#2F9AF8" }}
                     transition={{ duration: 0.2 }}
-                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-300 text-left"
+                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-150 text-left"
                   >
                     {link.name}
                   </motion.button>
@@ -231,14 +232,14 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
                     href={link.href}
                     whileHover={{ x: 5, color: "#2F9AF8" }}
                     transition={{ duration: 0.2 }}
-                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-300"
+                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-150"
                   >
                     {link.name}
                   </motion.a>
@@ -255,14 +256,14 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
                     href={link.href}
                     whileHover={{ x: 5, color: "#2F9AF8" }}
                     transition={{ duration: 0.2 }}
-                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-300"
+                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-150"
                   >
                     {link.name}
                   </motion.a>
@@ -279,14 +280,14 @@ const Footer = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
-                  whileInView={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
                 >
                   <motion.a
                     href={link.href}
                     whileHover={{ x: 5, color: "#2F9AF8" }}
                     transition={{ duration: 0.2 }}
-                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-300"
+                    className="text-slate-400 hover:text-[#2F9AF8] transition-colors duration-150"
                   >
                     {link.name}
                   </motion.a>
@@ -300,7 +301,7 @@ const Footer = () => {
         <motion.div
           variants={newsletterVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="mt-12 pt-8 border-t border-slate-800"
         >
           <div className="max-w-md">
@@ -310,7 +311,7 @@ const Footer = () => {
             <p className="text-slate-400 mb-4 text-sm">
               Get the latest product updates and news in your inbox.
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 w-11/12">
               <motion.input
                 whileFocus={{ 
                   scale: 1.02,
@@ -321,6 +322,7 @@ const Footer = () => {
                 className="flex-1 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[#2F9AF8] transition-colors"
               />
               <motion.button
+                aria-label='Subscribe to newsletter'
                 whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#2F9AF8] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors whitespace-nowrap"
@@ -337,7 +339,7 @@ const Footer = () => {
         <motion.div
           variants={bottomBarVariants}
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           className="container mx-auto px-4 py-6 max-w-7xl"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">

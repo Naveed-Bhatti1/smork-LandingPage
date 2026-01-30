@@ -14,8 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Smork",
-  description: "Ai based project management tool",
+  title: "Smork - AI Project Management Tool",
+  description:
+    "Sample Landing page for Smork AI Project Management Tool using Next.js 16 App Router",
+  robots: "index, follow",
 };
 
 export default function RootLayout({ children }) {

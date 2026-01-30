@@ -1,13 +1,19 @@
 "use client";
 
-import { ChartColumn, Target, MessageCircleMore, Check, ArrowRight } from "lucide-react";
+import {
+  ChartColumn,
+  Target,
+  MessageCircleMore,
+  Check,
+  ArrowRight,
+} from "lucide-react";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const Benefits = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { margin: "-100px" });
 
   const Cards = [
     {
@@ -61,7 +67,7 @@ const Benefits = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -71,7 +77,8 @@ const Benefits = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const yOffset = sectionId === "hero" ? -120 : -100;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
       window.scrollTo({
         top: y,
@@ -83,7 +90,7 @@ const Benefits = () => {
   // Individual benefit card component with parallax
   const BenefitCard = ({ card, index }) => {
     const cardRef = useRef(null);
-    const isCardInView = useInView(cardRef, { once: true, margin: "-100px" });
+    const isCardInView = useInView(cardRef, { margin: "-100px" });
     const isOdd = index % 2 === 1;
 
     // Parallax effect for image
@@ -95,23 +102,23 @@ const Benefits = () => {
 
     // Animation variants based on position
     const contentVariants = {
-      hidden: { 
-        opacity: 0, 
+      hidden: {
+        opacity: 0,
         x: isOdd ? 100 : -100,
       },
       visible: {
         opacity: 1,
         x: 0,
         transition: {
-          duration: 0.8,
+          duration: 0.4,
           ease: [0.25, 0.4, 0.25, 1],
         },
       },
     };
 
     const imageVariants = {
-      hidden: { 
-        opacity: 0, 
+      hidden: {
+        opacity: 0,
         x: isOdd ? -100 : 100,
         scale: 0.9,
       },
@@ -120,14 +127,14 @@ const Benefits = () => {
         x: 0,
         scale: 1,
         transition: {
-          duration: 0.8,
+          duration: 0.4,
           ease: [0.25, 0.4, 0.25, 1],
         },
       },
     };
 
     const badgeVariants = {
-      hidden: { 
+      hidden: {
         scale: 0,
         rotate: -180,
       },
@@ -149,7 +156,7 @@ const Benefits = () => {
         opacity: 1,
         x: 0,
         transition: {
-          duration: 0.5,
+          duration: 0.3,
           delay: 0.6 + i * 0.1,
           ease: "easeOut",
         },
@@ -167,11 +174,11 @@ const Benefits = () => {
         <motion.div
           variants={badgeVariants}
           initial="hidden"
-          whileInView={isCardInView ? "visible" : "hidden"}
-          whileHover={{ 
-            scale: 1.2, 
+          animate={isCardInView ? "visible" : "hidden"}
+          whileHover={{
+            scale: 1.2,
             rotate: 360,
-            transition: { duration: 0.6 }
+            transition: { duration: 0.3 },
           }}
           className={`
             absolute -top-8 left-1/2 lg:left-auto transform -translate-x-1/2 lg:translate-x-0
@@ -184,28 +191,28 @@ const Benefits = () => {
             cursor-pointer
           `}
         >
-          <span className="text-white text-2xl font-bold">
-            {card.number}
-          </span>
+          <span className="text-white text-2xl font-bold">{card.number}</span>
         </motion.div>
 
         {/* Image Section */}
         <motion.div
           variants={imageVariants}
           initial="hidden"
-          whileInView={isCardInView ? "visible" : "hidden"}
+          animate={isCardInView ? "visible" : "hidden"}
           className="w-full lg:w-1/2"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4 }}
-            className="relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300"
+            transition={{ duration: 0.2 }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-150"
           >
             <motion.div style={{ y: imageY }}>
               <Image
                 className="w-full h-100 object-cover"
                 width={600}
                 height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
                 src={card.img}
                 alt={card.title}
               />
@@ -223,21 +230,21 @@ const Benefits = () => {
         <motion.div
           variants={contentVariants}
           initial="hidden"
-          whileInView={isCardInView ? "visible" : "hidden"}
+          animate={isCardInView ? "visible" : "hidden"}
           className="w-full lg:w-1/2"
         >
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 lg:p-10"
+            className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-150 p-8 lg:p-10"
           >
             {/* Icon */}
             <motion.div
-              whileHover={{ 
+              whileHover={{
                 rotate: [0, -10, 10, -10, 0],
                 scale: 1.1,
               }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className={`
                 w-20 h-20 rounded-2xl
                 bg-linear-to-br ${card.gradient}
@@ -267,7 +274,7 @@ const Benefits = () => {
                   custom={idx}
                   variants={bulletVariants}
                   initial="hidden"
-                  whileInView={isCardInView ? "visible" : "hidden"}
+                  animate={isCardInView ? "visible" : "hidden"}
                   className="flex items-start gap-3 text-slate-700"
                 >
                   <motion.div
@@ -280,15 +287,9 @@ const Benefits = () => {
                       shrink-0 mt-0.5
                     `}
                   >
-                    <Check
-                      size={14}
-                      className="text-white"
-                      strokeWidth={3}
-                    />
+                    <Check size={14} className="text-white" strokeWidth={3} />
                   </motion.div>
-                  <span className="text-base leading-relaxed">
-                    {bullet}
-                  </span>
+                  <span className="text-base leading-relaxed">{bullet}</span>
                 </motion.li>
               ))}
             </ul>
@@ -308,30 +309,36 @@ const Benefits = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
+            transition={{ duration: 0.3 }}
             className="inline-block px-4 py-2 bg-blue-100 text-[#2F9AF8] rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
             Benefits
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={
+              isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
             Why teams choose Smork
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            animate={
+              isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.3, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
             See how Smork transforms the way you work
@@ -343,8 +350,8 @@ const Benefits = () => {
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 -ml-0.5">
             <motion.div
               initial={{ scaleY: 0 }}
-              whileInView={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
               style={{ originY: 0 }}
               className="h-full border-l-2 border-dashed border-blue-200"
             ></motion.div>
@@ -361,27 +368,28 @@ const Benefits = () => {
         {/* CTA Bar */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          animate={ isInView ? { opacity: 1, y: 0 }: { opacity: 0, y: 30 }}
+          viewport={{ margin: "-100px" }}
+          transition={{ duration: 0.3 }}
           className="mt-20 bg-blue-50 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-slate-700 text-lg font-semibold">
             See how Smork can help your team deliver faster
           </p>
           <motion.button
+            aria-label="Start Free Trial"
             onClick={() => scrollToSection("pricing")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-[#2F9AF8] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-300 shadow-md flex items-center gap-2 whitespace-nowrap"
+            className="bg-[#2F9AF8] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-150 shadow-md flex items-center gap-2 whitespace-nowrap"
           >
-           Start Free Trial
+            Start Free Trial
             <motion.div
-              whileInView={{ x: [0, 5, 0] }}
-              transition={{ 
-                duration: 1.5,
+              animate={ { x: [0, 5, 0] }}
+              transition={{
+                duration: 0.8,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               <ArrowRight size={18} />

@@ -7,7 +7,7 @@ import { useRef } from "react";
 
 const Working = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { margin: "-100px" });
 
   const steps = [
     {
@@ -52,7 +52,7 @@ const Working = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -82,7 +82,7 @@ const Working = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: [0.25, 0.4, 0.25, 1],
       },
     },
@@ -118,7 +118,7 @@ const Working = () => {
       scale: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         delay: 0.4,
       },
     },
@@ -134,30 +134,30 @@ const Working = () => {
         {/* Header */}
         <motion.div
           initial="hidden"
-          whileInView={isInView ? "visible" : "hidden"}
+          animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
             className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
             How It Works
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
             Get started in minutes
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
             No complicated setup. Start managing projects in 3 simple steps.
@@ -171,9 +171,9 @@ const Working = () => {
             <div className="relative h-1">
               <motion.div
                 initial={{ scaleX: 0 }}
-                whileInView={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ 
-                  duration: 1.5,
+                  duration: 0.8,
                   delay: 0.5,
                   ease: "easeInOut"
                 }}
@@ -182,9 +182,9 @@ const Working = () => {
               ></motion.div>
               <motion.div
                 initial={{ scaleX: 0 }}
-                whileInView={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ 
-                  duration: 1.5,
+                  duration: 0.8,
                   delay: 0.5,
                   ease: "easeInOut"
                 }}
@@ -198,7 +198,7 @@ const Working = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView={isInView ? "visible" : "hidden"}
+            animate={isInView ? "visible" : "hidden"}
             className="grid lg:grid-cols-3 gap-12 lg:gap-8"
           >
             {steps.map((step, index) => (
@@ -213,7 +213,7 @@ const Working = () => {
                     y: -8,
                     transition: { duration: 0.3 }
                   }}
-                  className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 h-full"
+                  className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-150 p-8 h-full"
                 >
                   {/* Number Badge */}
                   <motion.div
@@ -221,7 +221,7 @@ const Working = () => {
                     whileHover={{ 
                       scale: 1.2,
                       rotate: 360,
-                      transition: { duration: 0.5 }
+                      transition: { duration: 0.3 }
                     }}
                     className={`
                       absolute -top-10 left-1/2 transform -translate-x-1/2
@@ -243,7 +243,7 @@ const Working = () => {
                     {/* Emoji with bounce */}
                     <motion.div
                       initial={{ scale: 0 }}
-                      whileInView={isInView ? { scale: 1 } : { scale: 0 }}
+                      animate={isInView ? { scale: 1 } : { scale: 0 }}
                       transition={{
                         type: "spring",
                         stiffness: 200,
@@ -253,7 +253,7 @@ const Working = () => {
                       whileHover={{
                         scale: 1.2,
                         rotate: [0, -10, 10, -10, 0],
-                        transition: { duration: 0.5 }
+                        transition: { duration: 0.3 }
                       }}
                       className="text-5xl mb-4 inline-block cursor-pointer"
                     >
@@ -263,7 +263,7 @@ const Working = () => {
                     {/* Label */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.6 + index * 0.3 }}
                       className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3"
                     >
@@ -273,7 +273,7 @@ const Working = () => {
                     {/* Title */}
                     <motion.h3
                       initial={{ opacity: 0, y: 10 }}
-                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.7 + index * 0.3 }}
                       className="text-2xl font-bold text-slate-800 mb-4"
                     >
@@ -283,7 +283,7 @@ const Working = () => {
                     {/* Description */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      whileInView={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ delay: 0.8 + index * 0.3 }}
                       className="text-slate-600 leading-relaxed mb-6"
                     >
@@ -303,6 +303,8 @@ const Working = () => {
                         src={step.img}
                         width={400}
                         height={250}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        loading="lazy"
                         alt={step.title}
                         className="w-full h-auto object-cover"
                       />
@@ -314,7 +316,7 @@ const Working = () => {
                 {index < steps.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
-                    whileInView={isInView ? { 
+                    animate={isInView ? { 
                       opacity: 1, 
                       y: 0,
                     } : { 
@@ -323,16 +325,16 @@ const Working = () => {
                     }}
                     transition={{ 
                       delay: 0.9 + index * 0.3,
-                      duration: 0.5
+                      duration: 0.3
                     }}
                     className="lg:hidden flex justify-center my-8"
                   >
                     <motion.div
-                      whileInView={{
+                      animate={{
                         y: [0, 10, 0],
                       }}
                       transition={{
-                        duration: 1.5,
+                        duration: 0.8,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
