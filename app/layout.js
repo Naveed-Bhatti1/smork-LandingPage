@@ -18,6 +18,9 @@ export const metadata = {
   description:
     "Sample Landing page for Smork AI Project Management Tool using Next.js 16 App Router",
   robots: "index, follow",
+  verification: {
+    google: "BUf55vt0rNZ6InGufnZUUaOkKY9EbhcgMqROI1ljDds"
+  }
 };
 
 export default function RootLayout({ children }) {
