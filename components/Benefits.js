@@ -211,8 +211,7 @@ const Benefits = () => {
                 className="w-full h-100 object-cover"
                 width={600}
                 height={400}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
+                sizes="(min-width: 1040px) 602px, (min-width: 680px) 100vw, 577px"
                 src={card.img}
                 alt={card.title}
               />
@@ -325,9 +324,7 @@ const Benefits = () => {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={
-              isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-            }
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 mb-6"
           >
@@ -335,9 +332,7 @@ const Benefits = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={
-              isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-            }
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: 0.3 }}
             className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed"
           >
@@ -368,7 +363,7 @@ const Benefits = () => {
         {/* CTA Bar */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={ isInView ? { opacity: 1, y: 0 }: { opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           viewport={{ margin: "-100px" }}
           transition={{ duration: 0.3 }}
           className="mt-20 bg-blue-50 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-4"
@@ -385,7 +380,7 @@ const Benefits = () => {
           >
             Start Free Trial
             <motion.div
-              animate={ { x: [0, 5, 0] }}
+              animate={{ x: [0, 5, 0] }}
               transition={{
                 duration: 0.8,
                 repeat: Infinity,

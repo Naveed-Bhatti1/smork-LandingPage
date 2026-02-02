@@ -263,9 +263,8 @@ const Hero = () => {
             <motion.div
               ref={blobRef}
               animate={{
-                      x: [0, 5, 0],
-                    }
-              }
+                x: [0, 5, 0],
+              }}
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
@@ -384,7 +383,7 @@ const Hero = () => {
               width={1200}
               height={800}
               priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              sizes="(min-width: 1280px) 1152px, (min-width: 1040px) 992px, (min-width: 780px) 736px, (min-width: 680px) 608px, calc(94.44vw - 15px)"
               alt="Smork Dashboard Preview"
               className="w-full h-auto"
             />
@@ -492,7 +491,6 @@ const Hero = () => {
                   src={logo}
                   width={120}
                   height={60}
-                  loading="lazy"
                   sizes="120px"
                   alt="Company Logo"
                 />
@@ -511,7 +509,6 @@ const Hero = () => {
                   src={logo}
                   width={120}
                   height={60}
-                  loading="lazy"
                   sizes="120px"
                   alt="Company Logo"
                 />

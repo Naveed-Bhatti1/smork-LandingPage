@@ -72,8 +72,8 @@ const Working = () => {
 
   // Individual step card variants
   const stepVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 60,
       scale: 0.9,
     },
@@ -90,7 +90,7 @@ const Working = () => {
 
   // Number badge variants
   const badgeVariants = {
-    hidden: { 
+    hidden: {
       scale: 0,
       rotate: -180,
     },
@@ -108,7 +108,7 @@ const Working = () => {
 
   // Image fade variants
   const imageVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 0.95,
       y: 20,
@@ -140,7 +140,9 @@ const Working = () => {
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
             transition={{ duration: 0.3 }}
             className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
           >
@@ -172,10 +174,10 @@ const Working = () => {
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ 
+                transition={{
                   duration: 0.8,
                   delay: 0.5,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
                 style={{ originX: 0 }}
                 className="absolute inset-0 bg-linear-to-r from-[#2F9AF8] via-purple-500 to-[#2F9AF8] opacity-20 rounded-full"
@@ -183,10 +185,10 @@ const Working = () => {
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ 
+                transition={{
                   duration: 0.8,
                   delay: 0.5,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
                 style={{ originX: 0 }}
                 className="absolute inset-0 border-t-2 border-dashed border-blue-300"
@@ -202,26 +204,26 @@ const Working = () => {
             className="grid lg:grid-cols-3 gap-12 lg:gap-8"
           >
             {steps.map((step, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 variants={stepVariants}
                 className="relative"
               >
                 {/* Step Card */}
                 <motion.div
-                  whileHover={{ 
+                  whileHover={{
                     y: -8,
-                    transition: { duration: 0.3 }
+                    transition: { duration: 0.3 },
                   }}
                   className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-150 p-8 h-full"
                 >
                   {/* Number Badge */}
                   <motion.div
                     variants={badgeVariants}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.2,
                       rotate: 360,
-                      transition: { duration: 0.3 }
+                      transition: { duration: 0.3 },
                     }}
                     className={`
                       absolute -top-10 left-1/2 transform -translate-x-1/2
@@ -253,7 +255,7 @@ const Working = () => {
                       whileHover={{
                         scale: 1.2,
                         rotate: [0, -10, 10, -10, 0],
-                        transition: { duration: 0.3 }
+                        transition: { duration: 0.3 },
                       }}
                       className="text-5xl mb-4 inline-block cursor-pointer"
                     >
@@ -263,7 +265,9 @@ const Working = () => {
                     {/* Label */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={
+                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                      }
                       transition={{ delay: 0.6 + index * 0.3 }}
                       className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3"
                     >
@@ -273,7 +277,9 @@ const Working = () => {
                     {/* Title */}
                     <motion.h3
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={
+                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                      }
                       transition={{ delay: 0.7 + index * 0.3 }}
                       className="text-2xl font-bold text-slate-800 mb-4"
                     >
@@ -283,7 +289,9 @@ const Working = () => {
                     {/* Description */}
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      animate={
+                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                      }
                       transition={{ delay: 0.8 + index * 0.3 }}
                       className="text-slate-600 leading-relaxed mb-6"
                     >
@@ -293,9 +301,9 @@ const Working = () => {
                     {/* Screenshot/Mockup with fade */}
                     <motion.div
                       variants={imageVariants}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.05,
-                        transition: { duration: 0.3 }
+                        transition: { duration: 0.3 },
                       }}
                       className="mt-6 rounded-xl overflow-hidden bg-slate-50 border border-slate-200 shadow-sm"
                     >
@@ -303,8 +311,7 @@ const Working = () => {
                         src={step.img}
                         width={400}
                         height={250}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        loading="lazy"
+                        sizes="(min-width: 1360px) 329px, (min-width: 1040px) calc(26.33vw - 24px), calc(100vw - 98px)"
                         alt={step.title}
                         className="w-full h-auto object-cover"
                       />
@@ -316,16 +323,20 @@ const Working = () => {
                 {index < steps.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
-                    animate={isInView ? { 
-                      opacity: 1, 
-                      y: 0,
-                    } : { 
-                      opacity: 0, 
-                      y: -20 
-                    }}
-                    transition={{ 
+                    animate={
+                      isInView
+                        ? {
+                            opacity: 1,
+                            y: 0,
+                          }
+                        : {
+                            opacity: 0,
+                            y: -20,
+                          }
+                    }
+                    transition={{
                       delay: 0.9 + index * 0.3,
-                      duration: 0.3
+                      duration: 0.3,
                     }}
                     className="lg:hidden flex justify-center my-8"
                   >
@@ -336,7 +347,7 @@ const Working = () => {
                       transition={{
                         duration: 0.8,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       }}
                     >
                       <ArrowRight className="text-blue-400" size={32} />
